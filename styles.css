@@ -1103,4 +1103,45 @@ body {
 
   /* optional: tighten spacing in Education list on mobile */
   .education-list { padding-left: 1rem; }
+  
+}
+
+
+/* ───────── Touch-only: don't keep hover/active/focus colors after tap ───────── */
+@media (hover: none) and (pointer: coarse) {
+  a, button { -webkit-tap-highlight-color: transparent; }
+
+  /* DARK THEME reset */
+  [data-theme="dark"] .social-btn:hover,
+  [data-theme="dark"] .social-btn:focus,
+  [data-theme="dark"] .social-btn:active,
+  [data-theme="dark"] .btn:hover,
+  [data-theme="dark"] .btn:focus,
+  [data-theme="dark"] .btn:active,
+  [data-theme="dark"] .explore-btn:hover,
+  [data-theme="dark"] .explore-btn:focus,
+  [data-theme="dark"] .explore-btn:active {
+    background: var(--card-color) !important;
+    color: var(--text-color) !important;
+    border-color: var(--border-color) !important;
+    box-shadow: none !important;
+    outline: none !important;
+  }
+
+  /* LIGHT THEME reset */
+  [data-theme="light"] .social-btn:hover,
+  [data-theme="light"] .social-btn:focus,
+  [data-theme="light"] .social-btn:active,
+  [data-theme="light"] .btn:hover,
+  [data-theme="light"] .btn:focus,
+  [data-theme="light"] .btn:active,
+  [data-theme="light"] .explore-btn:hover,
+  [data-theme="light"] .explore-btn:focus,
+  [data-theme="light"] .explore-btn:active {
+    background: #ffffff !important;
+    color: #0f1f3a !important;
+    border-color: rgba(16,24,40,0.12) !important;
+    box-shadow: none !important;
+    outline: none !important;
+  }
 }

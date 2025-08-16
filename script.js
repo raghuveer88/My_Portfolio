@@ -275,6 +275,26 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.fade-in-section').forEach(section => {
         fadeObserver.observe(section);
     });
+
+    (function () {
+    const isTouch = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+    if (!isTouch) return;
+
+    const blurActive = () => {
+        const el = document.activeElement;
+        if (el && el.matches('a,button,.btn,.social-btn,.explore-btn')) el.blur();
+    };
+
+    // clear right after tap/click
+    document.querySelectorAll('a,button,.btn,.social-btn,.explore-btn').forEach(el => {
+        el.addEventListener('touchend', () => el.blur(), { passive: true });
+        el.addEventListener('mouseup', () => el.blur());
+    });
+
+    // clear when coming back from another tab/page (bfcache)
+    window.addEventListener('pageshow', () => setTimeout(blurActive, 0));
+    })();
+    
 });
 
 // Interpolation helpers removed since sections are built directly via JavaScript
