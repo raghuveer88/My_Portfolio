@@ -136,6 +136,15 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    const navLinks = document.querySelectorAll('.main-nav a[href^="#"]');
+    navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        // remove the 'open' class so the dropdown closes
+        const mainNav = document.querySelector('.main-nav');
+        if (mainNav) mainNav.classList.remove('open');
+    });
+    });
+
     // Build Experience section with coloured borders and slide-in animations
     const expContainer = document.getElementById('experience-timeline');
     if (expContainer) {
@@ -234,7 +243,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Navigation highlighting based on scroll position
-    const navLinks = document.querySelectorAll('.main-nav a');
+    // const navLinks = document.querySelectorAll('.main-nav a');
     const sections = document.querySelectorAll('section');
     const navObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {

@@ -22,6 +22,8 @@
     --shadow-color: rgba(0, 0, 0, 0.5);
     /* Header background overlay for dark theme */
     --header-bg: rgba(0, 0, 0, 0.4);
+    --icon-color: white
+
 }
 
 /* Light theme variables */
@@ -38,6 +40,7 @@
   --border-color: rgba(10,102,255,0.15);
   --header-bg: rgba(255,255,255,0.85);
   --shadow-color: rgba(16,24,40,0.08);
+  --icon-color: #0a66ff
 }
 
 /* ---------- LIGHT MODE: CLEAN HERO WITH MOVING BLUE LINES ---------- */
@@ -152,7 +155,7 @@ body {
 }
 .logo-text {
     font-weight: 700;
-    color: #fff;
+    color: var(--icon-color);
     font-size: 1.1rem;
 }
 .brand-name {
@@ -1077,4 +1080,27 @@ body {
   .timeline-dot {
     display: none;
   }
+
+  .about-content {
+    flex-direction: column;      /* side-by-side -> stacked */
+    align-items: stretch;
+    gap: 1rem;
+  }
+
+  .about-left,
+  .about-right {
+    width: 100%;
+  }
+
+  /* make the highlight cards fill the width nicely */
+  .about-right {
+    display: grid;
+    grid-template-columns: 1fr;  /* one per row */
+    gap: 1rem;
+  }
+
+  .highlight-card { width: 100%; }
+
+  /* optional: tighten spacing in Education list on mobile */
+  .education-list { padding-left: 1rem; }
 }
