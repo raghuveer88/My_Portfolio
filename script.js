@@ -44,7 +44,8 @@ const scope = {
             description: 'Built a clustering and classification pipeline using Sentence‑BERT and HDBSCAN to analyse and categorise over one million jokes into distinct humour types. Leveraged UMAP for dimensionality reduction and fine‑tuned DistilBERT to achieve 83% accuracy.',
             technologies: ['Python', 'TensorFlow', 'Sentence‑BERT', 'HDBSCAN', 'UMAP'],
             award: 'Research Project',
-            image: 'assets/project1.png'
+            image: 'assets/project1.png',
+            repo: "https://github.com/raghuveer88/Joke-Clustering-and-Predictions/tree/main"
         },
         {
             name: 'Student‑Faculty Discussion Forum & Availability Tracker',
@@ -61,7 +62,58 @@ const scope = {
             technologies: ['React Native', 'Node.js', 'Express', 'MongoDB', 'Google Maps API'],
             award: 'Personal Project',
             image: 'assets/project3.png'
-        }
+        },
+        {
+            name: "Hybrid DASH + P2P Video Delivery",
+            date: "2025",
+            image: "assets/dash-p2p.png",
+            description:
+                "A browser-based prototype that combines MPEG-DASH adaptive streaming with a WebRTC peer mesh. Peers exchange video segments while the client preserves ABR and instantly falls back to the CDN for consistent QoS.",
+            technologies: [
+                "MPEG-DASH",
+                "WebRTC",
+                "JavaScript",
+                "Node.js",
+                "Express",
+                "Socket.IO",
+                "ABR",
+                "Segment Scheduler"
+            ],
+            repo: "https://github.com/raghuveer88/Collaborative-Video-Delivey-Merging-Dash-and-P2P"
+            },
+            {
+            name: "Shell in C",
+            date: "2025",
+            image: "assets/shell-c-hero.png",
+            description:
+                "Interactive Unix-style shell in C with a polished <user@host:cwd> prompt, resilient parsing, history recall, foreground/background execution, and job control—built on fork/exec with signal-safe (SIGCHLD/SIGINT) handling.",
+            technologies: [
+                "C",
+                "POSIX",
+                "fork/exec",
+                "signals",
+                "job control",
+                "parsing"
+            ],
+            repo: "https://github.com/raghuveer88/Shell-in-c"
+            },
+            {
+            name: "ICC 2019 World Cup – Match Prediction",
+            date: "2019",
+            image: "assets/icc19.jpeg",
+            description:
+                "End-to-end ML pipeline predicting ICC 2019 match winners with calibrated probabilities. Builds features (Elo + recent form, head-to-head, venue/toss), benchmarks LR/GB/RF with time-series validation, calibrates scores (Platt/Isotonic), and runs Monte Carlo to project tournament advancement odds.",
+            technologies: [
+                "Python", "pandas", "scikit-learn",
+                "Elo", "logistic regression", "gradient boosting",
+                "random forest", "calibration", "Monte Carlo"
+            ],
+            repo: "https://github.com/raghuveer88/ICC-2019-WC-prediction"
+            }
+
+
+
+
     ],
     skills: [
         {
@@ -83,9 +135,9 @@ const scope = {
     ],
     achievements: [
         {
-            title: 'Orion Space Hackathon 2025',
+            title: 'Hackathon Finalist',
             result: '3rd Place',
-            description: 'Awarded for the Light Pollution Explorer project showcasing real‑world data visualisation.',
+            description: 'Built a hybrid movie recommender in 24 hours (CF + content); selected as a finalist',
             icon: 'fa-trophy'
         },
         {
@@ -187,6 +239,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     '<h3>' + project.name + '</h3>' +
                     '<p>' + project.description + '</p>' +
                     '<div class="tech-tags">' + project.technologies.map(t => '<span class="tech-tag">' + t + '</span>').join('') + '</div>' +
+                    (project.repo ? '<div class="project-actions"><a class="btn social-btn" target="_blank" href="' + project.repo + '"><i class="fab fa-github"></i> View Code</a></div>' : '') +
                 '</div>';
             projContainer.appendChild(card);
         });

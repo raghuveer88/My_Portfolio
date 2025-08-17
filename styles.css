@@ -1145,3 +1145,76 @@ body {
     outline: none !important;
   }
 }
+
+
+/* ===== Projects grid: force 3 per row, then wrap ===== */
+
+/* Make the grid, kill any old flex/scroll styles */
+.projects-section .projects-grid,
+#projects-grid {
+  display: grid !important;
+  grid-auto-flow: row dense !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 1.5rem !important;
+
+  /* neutralize horizontal row/scroll tricks */
+  overflow: visible !important;
+  white-space: normal !important;
+}
+
+/* Ensure cards behave inside the grid cells */
+.projects-section .projects-grid > .project-card,
+#projects-grid > .project-card {
+  min-width: 0 !important;
+  width: auto !important;
+  max-width: none !important;
+  flex: initial !important;          /* cancels flex children from old rules */
+  display: flex;                     /* if you want equal-height internals */
+  flex-direction: column;
+}
+
+/* Make images behave */
+.project-image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Breakpoints */
+@media (max-width: 1024px) {
+  .projects-section .projects-grid,
+  #projects-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .projects-section .projects-grid,
+  #projects-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+
+/* --- Projects: uniform image size (16:9), tidy clipping --- */
+.projects-grid .project-card,
+#projects-grid .project-card {
+  display: flex;
+  flex-direction: column;
+  border-radius: 12px;
+  overflow: hidden;               /* ensures the image corners clip */
+}
+
+/* make every project image the same size */
+.project-card .project-image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;           /* consistent height from width */
+  object-fit: cover;              /* crop to fill, no distortion */
+}
+
+/* If any previous CSS sets fixed heights/widths, neutralize them */
+.project-card .project-image {
+  height: auto !important;        /* aspect-ratio computes height */
+  max-width: none !important;
+}
